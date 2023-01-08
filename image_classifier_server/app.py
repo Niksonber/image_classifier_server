@@ -10,7 +10,7 @@ app = Flask("image classifier")
 def classify():
     if request.files:
         img = request.files["image"]
-        img = Image.open(img.read())
+        img = Image.open(img.stream)
         return jsonify(ImageClassifier.predict(img))
 
     return {"ok": False}
